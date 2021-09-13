@@ -1,2 +1,2 @@
-# CR-favorite-items-from-localstorage
+# football-tracker-exercise
 Created with CodeSandbox
