@@ -46,7 +46,7 @@ export default function App() {
     const movieFavorite = JSON.parse(
       localStorage.getItem("favorite-movie") || "0"
     );
-    setFavorite([...movieFavorite]);
+    if (movieFavorite) setFavorite([...movieFavorite]);
   }, []);
 
   return (
