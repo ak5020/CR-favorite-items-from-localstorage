@@ -11,6 +11,7 @@ export default function App() {
   const [movies, setMovies] = useState([]);
   const [favorite, setFavorite] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  console.log("searchValue", searchValue);
 
   const fetchData = async () => {
     const api = "https://jsonplaceholder.typicode.com/users/";
@@ -49,6 +50,20 @@ export default function App() {
     if (movieFavorite) setFavorite([...movieFavorite]);
   }, []);
 
+  const searchFunction = (event) => {
+    const keyword = event.target.value;
+    if (keyword !== "") {
+      const result = movies.filter((si) => {
+        return si.name.toLowerCase().startsWith(keyword.toLowerCase());
+      });
+      setSearchValue(result);
+      setMovies(result);
+    } else {
+      setSearchValue(searchValue);
+      fetchData();
+    }
+  };
+
   return (
     <div className="App container-fluid">
       <div className="row">
@@ -56,7 +71,7 @@ export default function App() {
           <MovieListHeader header="Movies" />
           <SearchBox
             searchValue={searchValue}
-            setSearchValue={setSearchValue}
+            searchFunc={(event) => searchFunction(event)}
           />
         </div>
       </div>
