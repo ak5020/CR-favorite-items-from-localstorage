@@ -7,7 +7,7 @@ function SearchBox(props) {
         className="form-control"
         placeholder="search"
         value={props.value}
-        onChange={(event) => props.setSearchValue(event.target.value)}
+        onChange={props.searchFunc}
       />
     </div>
   );
